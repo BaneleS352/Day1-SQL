@@ -1,0 +1,363 @@
+{
+  "exportedAt": "2026-04-20T12:22:33.310Z",
+  "courseId": "mssql-fundamentals",
+  "assessmentCount": 5,
+  "assessments": [
+    {
+      "id": "mssql-l1-lab-customers",
+      "courseId": "mssql-fundamentals",
+      "lessonId": "lesson-1",
+      "prompt": "Write the `CREATE TABLE` statement for `dbo.Customers`. Include `CustomerID INT IDENTITY` as the primary key, `FirstName NVARCHAR(100) NOT NULL`, `LastName NVARCHAR(100) NOT NULL`, `Email NVARCHAR(255) NOT NULL`, `PhoneNumber NVARCHAR(30) NULL`, and `CreatedAt DATETIME2(0)` with a default of the current date/time. Enforce that email addresses are unique.",
+      "expectedSql": "CREATE TABLE dbo.Customers\n(\n  CustomerID  INT IDENTITY(1,1) NOT NULL PRIMARY KEY,\n  FirstName   NVARCHAR(100) NOT NULL,\n  LastName    NVARCHAR(100) NOT NULL,\n  Email       NVARCHAR(255) NOT NULL UNIQUE,\n  PhoneNumber NVARCHAR(30) NULL,\n  CreatedAt   DATETIME2(0) NOT NULL DEFAULT SYSDATETIME()\n);",
+      "rubric": [
+        "CREATE TABLE dbo.Customers",
+        "CustomerID",
+        "IDENTITY",
+        "PRIMARY KEY",
+        "Email",
+        "UNIQUE",
+        "CreatedAt",
+        "DEFAULT"
+      ],
+      "forbiddenPatterns": [
+        "SELECT *"
+      ],
+      "attempts": 1,
+      "lastSubmission": "CREATE TABLE dbo.Customers\n(\n CustomerID INT IDENTITY UNIQUE PRIMARY KEY,\n FirstName NVARCHAR(100) NOT NULL,\n LastName NVARCHAR(100) NOT NULL,\n Email NVARCHAR(255) NOT NULL,\n PhoneNumber NVARCHAR(30) NULL,\n CreatedAt DEFAULT DATETIME2(0)\n\n);",
+      "deterministicScore": 89,
+      "deterministicStatus": "correct",
+      "deterministicFeedback": [
+        "Matched required patterns: CREATE TABLE dbo.Customers, CustomerID, IDENTITY, PRIMARY KEY, Email, UNIQUE, CreatedAt, DEFAULT.",
+        "Matched 3 of 3 key SQL keywords from the reference answer.",
+        "Matched 17 of 18 important identifiers from the reference answer.",
+        "Important identifiers that still seem to be missing: sysdatetime."
+      ],
+      "matchedPatterns": [
+        "CREATE TABLE dbo.Customers",
+        "CustomerID",
+        "IDENTITY",
+        "PRIMARY KEY",
+        "Email",
+        "UNIQUE",
+        "CreatedAt",
+        "DEFAULT"
+      ],
+      "missingPatterns": [],
+      "forbiddenMatches": [],
+      "matchedKeywords": [
+        "create",
+        "not",
+        "null"
+      ],
+      "missingKeywords": [],
+      "matchedIdentifiers": [
+        "table",
+        "dbo",
+        "customers",
+        "customerid",
+        "int",
+        "identity",
+        "primary",
+        "key",
+        "firstname",
+        "nvarchar",
+        "lastname",
+        "email",
+        "unique",
+        "phonenumber",
+        "createdat",
+        "datetime2",
+        "default"
+      ],
+      "missingIdentifiers": [
+        "sysdatetime"
+      ],
+      "updatedAt": 1776686253108
+    },
+    {
+      "id": "mssql-l1-lab-products",
+      "courseId": "mssql-fundamentals",
+      "lessonId": "lesson-1",
+      "prompt": "Write the `CREATE TABLE` statement for `dbo.Products`. Include `ProductID INT IDENTITY` as the primary key, `ProductName NVARCHAR(200) NOT NULL`, `SKU NVARCHAR(50) NOT NULL`, `UnitPrice DECIMAL(10,2) NOT NULL`, `IsActive BIT NOT NULL DEFAULT 1`, and `CreatedAt DATETIME2(0)` with a default of the current date/time. Enforce that SKU values are unique and that `UnitPrice >= 0`.",
+      "expectedSql": "CREATE TABLE dbo.Products\n(\n  ProductID   INT IDENTITY(1,1) NOT NULL PRIMARY KEY,\n  ProductName NVARCHAR(200) NOT NULL,\n  SKU         NVARCHAR(50) NOT NULL UNIQUE,\n  UnitPrice   DECIMAL(10,2) NOT NULL CHECK (UnitPrice >= 0),\n  IsActive    BIT NOT NULL DEFAULT (1),\n  CreatedAt   DATETIME2(0) NOT NULL DEFAULT SYSDATETIME()\n);",
+      "rubric": [
+        "CREATE TABLE dbo.Products",
+        "ProductID",
+        "IDENTITY",
+        "SKU",
+        "UNIQUE",
+        "UnitPrice",
+        "CHECK",
+        "IsActive",
+        "DEFAULT"
+      ],
+      "forbiddenPatterns": [],
+      "attempts": 2,
+      "lastSubmission": "CREATE TABLE dbo.Products\n(\nProductID INT IDENTITY UNIQUE PRIMARY KEY,\nProductName NVARCHAR(200) NOT NULL,\nSKU NVARCHAR(50) NOT NULL,\nUnitPrice DECIMAL(10,2) NOT NULL CHECK (UnitPrice >= 0),\nIsActive BIT NOT NULL DEFAULT 1,\nCreatedAt DATETIME2(0)\n);",
+      "deterministicScore": 89,
+      "deterministicStatus": "correct",
+      "deterministicFeedback": [
+        "Matched required patterns: CREATE TABLE dbo.Products, ProductID, IDENTITY, SKU, UNIQUE, UnitPrice, CHECK, IsActive, DEFAULT.",
+        "Matched 3 of 3 key SQL keywords from the reference answer.",
+        "Matched 20 of 21 important identifiers from the reference answer.",
+        "Important identifiers that still seem to be missing: sysdatetime."
+      ],
+      "matchedPatterns": [
+        "CREATE TABLE dbo.Products",
+        "ProductID",
+        "IDENTITY",
+        "SKU",
+        "UNIQUE",
+        "UnitPrice",
+        "CHECK",
+        "IsActive",
+        "DEFAULT"
+      ],
+      "missingPatterns": [],
+      "forbiddenMatches": [],
+      "matchedKeywords": [
+        "create",
+        "not",
+        "null"
+      ],
+      "missingKeywords": [],
+      "matchedIdentifiers": [
+        "table",
+        "dbo",
+        "products",
+        "productid",
+        "int",
+        "identity",
+        "primary",
+        "key",
+        "productname",
+        "nvarchar",
+        "sku",
+        "unique",
+        "unitprice",
+        "decimal",
+        "check",
+        "isactive",
+        "bit",
+        "default",
+        "createdat",
+        "datetime2"
+      ],
+      "missingIdentifiers": [
+        "sysdatetime"
+      ],
+      "updatedAt": 1776686617578
+    },
+    {
+      "id": "mssql-l1-lab-orders",
+      "courseId": "mssql-fundamentals",
+      "lessonId": "lesson-1",
+      "prompt": "Write the `CREATE TABLE` statement for `dbo.Orders`. Include `OrderID INT IDENTITY` as the primary key, `CustomerID INT NOT NULL`, `OrderDate DATETIME2(0)` with a default of the current date/time, and `OrderStatus NVARCHAR(50)` with a default of `Pending`. Add a foreign key from `CustomerID` to `dbo.Customers(CustomerID)` and enforce the business rule that customers with existing orders must not be deletable.",
+      "expectedSql": "CREATE TABLE dbo.Orders\n(\n  OrderID     INT IDENTITY(1,1) NOT NULL PRIMARY KEY,\n  CustomerID  INT NOT NULL,\n  OrderDate   DATETIME2(0) NOT NULL DEFAULT SYSDATETIME(),\n  OrderStatus NVARCHAR(50) NOT NULL DEFAULT ('Pending'),\n  FOREIGN KEY (CustomerID) REFERENCES dbo.Customers (CustomerID) ON DELETE NO ACTION\n);",
+      "rubric": [
+        "CREATE TABLE dbo.Orders",
+        "OrderID",
+        "CustomerID",
+        "FOREIGN KEY",
+        "REFERENCES dbo.Customers",
+        "OrderStatus",
+        "Pending",
+        "ON DELETE NO ACTION"
+      ],
+      "forbiddenPatterns": [],
+      "attempts": 4,
+      "lastSubmission": "CREATE TABLE dbo.Orders\n(\nOrderID INT IDENTITY UNIQUE PRIMARY KEY,\nOrderDate DATETIME2(0),\nOrderStatus NVARCHAR(50) DEFAULT N'Pending',\nCustomerID INT NOT NULL FOREIGN KEY (CustomerID) REFERENCES dbo.Customers ON DELETE NO ACTION,\n);",
+      "deterministicScore": 89,
+      "deterministicStatus": "correct",
+      "deterministicFeedback": [
+        "Matched required patterns: CREATE TABLE dbo.Orders, OrderID, CustomerID, FOREIGN KEY, REFERENCES dbo.Customers, OrderStatus, Pending, ON DELETE NO ACTION.",
+        "Matched 5 of 5 key SQL keywords from the reference answer.",
+        "Matched 20 of 21 important identifiers from the reference answer.",
+        "Important identifiers that still seem to be missing: sysdatetime."
+      ],
+      "matchedPatterns": [
+        "CREATE TABLE dbo.Orders",
+        "OrderID",
+        "CustomerID",
+        "FOREIGN KEY",
+        "REFERENCES dbo.Customers",
+        "OrderStatus",
+        "Pending",
+        "ON DELETE NO ACTION"
+      ],
+      "missingPatterns": [],
+      "forbiddenMatches": [],
+      "matchedKeywords": [
+        "create",
+        "not",
+        "null",
+        "on",
+        "delete"
+      ],
+      "missingKeywords": [],
+      "matchedIdentifiers": [
+        "table",
+        "dbo",
+        "orders",
+        "orderid",
+        "int",
+        "identity",
+        "primary",
+        "key",
+        "customerid",
+        "orderdate",
+        "datetime2",
+        "default",
+        "orderstatus",
+        "nvarchar",
+        "pending",
+        "foreign",
+        "references",
+        "customers",
+        "no",
+        "action"
+      ],
+      "missingIdentifiers": [
+        "sysdatetime"
+      ],
+      "updatedAt": 1776687234113
+    },
+    {
+      "id": "mssql-l1-lab-orderitems",
+      "courseId": "mssql-fundamentals",
+      "lessonId": "lesson-1",
+      "prompt": "Write the `CREATE TABLE` statement for `dbo.OrderItems` to model the many-to-many relationship between orders and products. Include `OrderID INT NOT NULL`, `ProductID INT NOT NULL`, `Quantity INT NOT NULL`, and `UnitPrice DECIMAL(10,2) NOT NULL`. Enforce a composite primary key on `(OrderID, ProductID)`, add foreign keys to `dbo.Orders` and `dbo.Products`, cascade delete line items when an order is deleted, and add checks so `Quantity > 0` and `UnitPrice >= 0`.",
+      "expectedSql": "CREATE TABLE dbo.OrderItems\n(\n  OrderID   INT NOT NULL,\n  ProductID INT NOT NULL,\n  Quantity  INT NOT NULL CHECK (Quantity > 0),\n  UnitPrice DECIMAL(10,2) NOT NULL CHECK (UnitPrice >= 0),\n  PRIMARY KEY (OrderID, ProductID),\n  FOREIGN KEY (OrderID) REFERENCES dbo.Orders (OrderID) ON DELETE CASCADE,\n  FOREIGN KEY (ProductID) REFERENCES dbo.Products (ProductID)\n);",
+      "rubric": [
+        "CREATE TABLE dbo.OrderItems",
+        "PRIMARY KEY",
+        "OrderID, ProductID",
+        "FOREIGN KEY (OrderID)",
+        "REFERENCES dbo.Orders",
+        "ON DELETE CASCADE",
+        "FOREIGN KEY (ProductID)",
+        "REFERENCES dbo.Products",
+        "Quantity",
+        "CHECK"
+      ],
+      "forbiddenPatterns": [],
+      "attempts": 2,
+      "lastSubmission": "CREATE TABLE dbo.OrderItems\n(\nOrderID INT NOT NULL,\nProductID INT NOT NULL,\nQuantity INT NOT NULL CHECK (QUANTITY > 0),\nUnitPrice DECIMAL(10,2) NOT NULL CHECK (UnitPrice >= 0),\nCONSTRAINT PK_OrderItems PRIMARY KEY (OrderID, ProductID),\nCONSTRAINT FK_OrderItems_Orders FOREIGN KEY (OrderID) REFERENCES dbo.Orders (OrderID) ON DELETE CASCADE,\nCONSTRAINT FK_OrderItems_Products FOREIGN KEY (ProductID)       REFERENCES dbo.Products (ProductID)\n);",
+      "deterministicScore": 90,
+      "deterministicStatus": "correct",
+      "deterministicFeedback": [
+        "Matched required patterns: CREATE TABLE dbo.OrderItems, PRIMARY KEY, OrderID, ProductID, FOREIGN KEY (OrderID), REFERENCES dbo.Orders, ON DELETE CASCADE, FOREIGN KEY (ProductID), REFERENCES dbo.Products, Quantity, CHECK.",
+        "Matched 5 of 5 key SQL keywords from the reference answer.",
+        "Matched 17 of 17 important identifiers from the reference answer."
+      ],
+      "matchedPatterns": [
+        "CREATE TABLE dbo.OrderItems",
+        "PRIMARY KEY",
+        "OrderID, ProductID",
+        "FOREIGN KEY (OrderID)",
+        "REFERENCES dbo.Orders",
+        "ON DELETE CASCADE",
+        "FOREIGN KEY (ProductID)",
+        "REFERENCES dbo.Products",
+        "Quantity",
+        "CHECK"
+      ],
+      "missingPatterns": [],
+      "forbiddenMatches": [],
+      "matchedKeywords": [
+        "create",
+        "not",
+        "null",
+        "on",
+        "delete"
+      ],
+      "missingKeywords": [],
+      "matchedIdentifiers": [
+        "table",
+        "dbo",
+        "orderitems",
+        "orderid",
+        "int",
+        "productid",
+        "quantity",
+        "check",
+        "unitprice",
+        "decimal",
+        "primary",
+        "key",
+        "foreign",
+        "references",
+        "orders",
+        "cascade",
+        "products"
+      ],
+      "missingIdentifiers": [],
+      "updatedAt": 1776687643571
+    },
+    {
+      "id": "mssql-l1-lab-order-totals",
+      "courseId": "mssql-fundamentals",
+      "lessonId": "lesson-1",
+      "prompt": "Write a query that shows each order with the customer name, order date, and total order value. Use `dbo.Orders`, `dbo.Customers`, and `dbo.OrderItems`. Return `OrderID`, a combined customer name, `OrderDate`, and an aggregated `OrderTotal`. Group correctly and order the final result by `OrderID`.",
+      "expectedSql": "SELECT\n  o.OrderID,\n  c.FirstName + ' ' + c.LastName AS CustomerName,\n  o.OrderDate,\n  SUM(oi.Quantity * oi.UnitPrice) AS OrderTotal\nFROM dbo.Orders AS o\nJOIN dbo.Customers AS c\n  ON c.CustomerID = o.CustomerID\nJOIN dbo.OrderItems AS oi\n  ON oi.OrderID = o.OrderID\nGROUP BY o.OrderID, c.FirstName, c.LastName, o.OrderDate\nORDER BY o.OrderID;",
+      "rubric": [
+        "SUM(",
+        "JOIN dbo.Customers",
+        "JOIN dbo.OrderItems",
+        "GROUP BY o.OrderID",
+        "o.OrderDate",
+        "ORDER BY o.OrderID"
+      ],
+      "forbiddenPatterns": [],
+      "attempts": 1,
+      "lastSubmission": "SELECT\n    o.OrderID,\n    CONCAT(c.FirstName, ' ', c.LastName) AS CustomerName,\n    o.OrderDate,\n    SUM(oi.Quantity * oi.UnitPrice) AS OrderTotal\nFROM dbo.Orders AS o\nJOIN dbo.Customers AS c\n    ON c.CustomerID = o.CustomerID\nJOIN dbo.OrderItems AS oi\n    ON oi.OrderID = o.OrderID\nGROUP BY\n    o.OrderID,\n    c.FirstName,\n    c.LastName,\n    o.OrderDate\nORDER BY\n    o.OrderID;",
+      "deterministicScore": 100,
+      "deterministicStatus": "correct",
+      "deterministicFeedback": [
+        "Matched required patterns: SUM(, JOIN dbo.Customers, JOIN dbo.OrderItems, GROUP BY o.OrderID, o.OrderDate, ORDER BY o.OrderID.",
+        "Matched 9 of 9 key SQL keywords from the reference answer.",
+        "Matched 14 of 14 important identifiers from the reference answer."
+      ],
+      "matchedPatterns": [
+        "SUM(",
+        "JOIN dbo.Customers",
+        "JOIN dbo.OrderItems",
+        "GROUP BY o.OrderID",
+        "o.OrderDate",
+        "ORDER BY o.OrderID"
+      ],
+      "missingPatterns": [],
+      "forbiddenMatches": [],
+      "matchedKeywords": [
+        "select",
+        "as",
+        "sum",
+        "from",
+        "join",
+        "on",
+        "group",
+        "by",
+        "order"
+      ],
+      "missingKeywords": [],
+      "matchedIdentifiers": [
+        "orderid",
+        "firstname",
+        "lastname",
+        "customername",
+        "orderdate",
+        "oi",
+        "quantity",
+        "unitprice",
+        "ordertotal",
+        "dbo",
+        "orders",
+        "customers",
+        "customerid",
+        "orderitems"
+      ],
+      "missingIdentifiers": [],
+      "updatedAt": 1776687739104
+    }
+  ]
+}
